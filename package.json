@@ -1,6 +1,6 @@
 {
   "name": "@ng-app-framework/maintenance",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "license": "MIT",
   "keywords": [
     "ng-app",
@@ -24,8 +24,10 @@
     "@angular/core": "^5.1.0",
     "@angular/forms": "^5.1.0",
     "@angular/router": "^5.1.0",
+    "@ng-app-framework/alert": "^1.1.0",
     "@ng-app-framework/api": "^1.1.0",
     "@ng-app-framework/core": "^1.1.0",
+    "@ng-app-framework/location": "^1.1.0",
     "@ng-app-framework/safe": "^1.1.0",
     "@ng-app-framework/time": "^1.1.0",
     "bootstrap": "^3.3.7",
