@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="maintenance-logo">
+                <img [src]="viewHelper.getLogo() | safeUrl"/>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="maintenance-image">
+                <img *ngIf="!viewHelper.isDownUnexpectedly" src="/assets/images/maintenance.png"/>
+                <img *ngIf="viewHelper.isDownUnexpectedly" src="/assets/images/caution.png"/>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="maintenance-verbiage"
+                 *ngIf="!viewHelper.isDownUnexpectedly && viewHelper.isInMaintenanceWindow">
+                <p>
+                    {{viewHelper.scheduledVerbiage}}
+                </p>
+                <p>
+                    Please see below for the anticipated maintenance completion time.
+                </p>
+                <div class="alert alert-info">
+                    <h3><span class="fa fa-info-circle"></span> Scheduled Maintenance:</h3>
+
+                    <div *ngIf="viewHelper.scheduleHasChanged">
+                        <strong>The maintenance schedule has changed.</strong>
+                    </div>
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <td>Current Time:</td>
+                            <td>{{currentTime | date: 'medium'}}</td>
+                        </tr>
+                        <tr>
+                            <td>Expected Completion:</td>
+                            <td><strong>{{getLocalEnd() | date: 'medium'}}</strong></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="maintenance-verbiage" *ngIf="viewHelper.isDownUnexpectedly">
+                <div class="alert alert-danger">
+                    <h3><span class="fa fa-exclamation-triangle"></span> Emergency Maintenance:</h3>
+                    <div>
+                        {{viewHelper.unexpectedVerbiage}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

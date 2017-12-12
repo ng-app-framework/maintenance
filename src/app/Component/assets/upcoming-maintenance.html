@@ -1,0 +1,27 @@
+<div class="widget-list" *ngIf="viewHelper.shouldDisplayUpcomingMaintenanceMessage">
+    <div class="widget">
+        <div class="alert alert-info">
+            <h3><span class="fa fa-info-circle"></span> Upcoming Scheduled Maintenance:</h3>
+            <div *ngIf="viewHelper.scheduleHasChanged">
+                <strong>The maintenance schedule has changed.</strong>
+            </div>
+            <p>Maintenance has been scheduled for the following time:</p>
+            <table class="table">
+                <tbody>
+                <tr>
+                    <td>Current Time:</td>
+                    <td>{{currentTime | date: 'medium'}}</td>
+                </tr>
+                <tr>
+                    <td>Beginning:</td>
+                    <td><strong>{{getLocalStart() | date: 'medium'}}</strong></td>
+                </tr>
+                <tr>
+                    <td>Expected Completion:</td>
+                    <td><strong>{{getLocalEnd() | date: 'medium'}}</strong></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
