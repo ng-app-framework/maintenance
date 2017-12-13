@@ -1,5 +1,5 @@
 import {Component, Inject, ViewEncapsulation} from "@angular/core";
-import {Observable} from "rxjs/Observable";
+import {Observable} from "rxjs/Rx";
 import {Subscription} from "rxjs/Subscription";
 import {MaintenanceViewHelper} from "../Service/MaintenanceViewHelper";
 
