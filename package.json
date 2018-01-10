@@ -22,7 +22,7 @@
         "@angular/forms": "^5.2.0",
         "@angular/router": "^5.2.0",
         "@ng-app-framework/alert": "^1.1.17",
-        "@ng-app-framework/api": "^1.1.19",
+        "@ng-app-framework/api": "^1.1.23",
         "@ng-app-framework/core": "^1.1.18",
         "@ng-app-framework/location": "^1.1.15",
         "@ng-app-framework/safe": "^1.1.15",
