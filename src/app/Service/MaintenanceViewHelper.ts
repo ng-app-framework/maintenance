@@ -1,8 +1,8 @@
 import {EventEmitter, Injectable} from "@angular/core";
-import {MaintenanceConfig} from "./MaintenanceConfig";
-import {SiteConfig} from "@ng-app-framework/core";
-import {TimeFrame} from "@ng-app-framework/time";
-import {Inject} from "@angular/core";
+import {MaintenanceConfig}        from "./MaintenanceConfig";
+import {SiteConfig}               from "@ng-app-framework/core";
+import {TimeFrame}                from "@ng-app-framework/time";
+import {Inject}                   from "@angular/core";
 
 @Injectable()
 export class MaintenanceViewHelper {
@@ -70,9 +70,7 @@ export class MaintenanceViewHelper {
     }
 
     public set isInMaintenanceWindow(value: boolean) {
-        if (this._isInMaintenanceWindow !== value) {
-            this.onIsInMaintenanceWindowChange.emit(value);
-        }
+        this.onIsInMaintenanceWindowChange.emit(value);
         this._isInMaintenanceWindow = value;
     }
 
