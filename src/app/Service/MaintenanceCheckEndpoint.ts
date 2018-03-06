@@ -6,6 +6,7 @@ import {Observable}               from "rxjs/Rx";
 @Injectable()
 export class MaintenanceCheckEndpoint extends Endpoint {
 
+    module = 'Maintenance';
     /** change this to where your maintenance details are located **/
     path: string = '/maintenance.json';
 
