@@ -18,6 +18,7 @@ export class MaintenanceListener {
     listen() {
         this.viewHelper.onIsInMaintenanceWindowChange.takeUntil(UnsubscribeAll)
             .subscribe((value) => this.handleRoutes(value));
+        this.handleRoutes(this.viewHelper.isInMaintenanceWindow);
     }
 
     handleMaintenanceEnded() {
