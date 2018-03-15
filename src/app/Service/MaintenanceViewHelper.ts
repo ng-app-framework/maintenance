@@ -70,7 +70,9 @@ export class MaintenanceViewHelper {
     }
 
     public set isInMaintenanceWindow(value: boolean) {
-        this.onIsInMaintenanceWindowChange.emit(value);
+        if (this._isInMaintenanceWindow !== value) {
+            this.onIsInMaintenanceWindowChange.emit(value);
+        }
         this._isInMaintenanceWindow = value;
     }
 

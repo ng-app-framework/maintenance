@@ -1,4 +1,5 @@
 import {Component, Inject, ViewEncapsulation} from "@angular/core";
+import {TimeFrame}                            from "@ng-app-framework/time";
 import {Observable}                           from "rxjs/Rx";
 import {Subscription}                         from "rxjs/Subscription";
 import {MaintenanceViewHelper}                from "../Service/MaintenanceViewHelper";
@@ -15,6 +16,8 @@ export class MaintenanceComponent {
 
     protected timeSubscription: Subscription;
 
+    time = new TimeFrame();
+
 
     constructor(@Inject(MaintenanceViewHelper) public viewHelper: MaintenanceViewHelper) {
     }
@@ -22,7 +25,8 @@ export class MaintenanceComponent {
     ngOnInit() {
         this.timeSubscription = Observable.interval(this.viewHelper.oneSecondInMilliseconds)
                                           .subscribe(value => {
-                                              this.currentTime = new Date();
+                                              this.currentTime                      = new Date();
+                                              this.viewHelper.isInMaintenanceWindow = this.viewHelper.inMaintenanceWindow();
                                           });
 
     }
