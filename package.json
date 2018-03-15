@@ -66,6 +66,7 @@
             "name": "ng-app-maintenance",
             "externals": {
                 "rxjs/Rx": "rxjs",
+                "@angular/core": "angular",
                 "ngx-toastr": "ngx-toastr",
                 "@ng-app-framework/core": "ng-app-core",
                 "@ng-app-framework/alert": "ng-app-alert",
