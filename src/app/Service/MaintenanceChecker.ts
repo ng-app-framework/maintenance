@@ -1,28 +1,30 @@
-import {Injectable} from "@angular/core";
+import {EventEmitter, Injectable} from "@angular/core";
+import {Observable}               from "rxjs";
 import {MaintenanceCheckEndpoint} from "./MaintenanceCheckEndpoint";
-import {MaintenanceConfig} from "./MaintenanceConfig";
-import {MaintenanceNotifier} from "./MaintenanceNotifier";
-import {MaintenanceViewHelper} from "./MaintenanceViewHelper";
+import {MaintenanceConfig}        from "./MaintenanceConfig";
+import {MaintenanceNotifier}      from "./MaintenanceNotifier";
+import {MaintenanceViewHelper}    from "./MaintenanceViewHelper";
 
 @Injectable()
 export class MaintenanceChecker {
 
+    stop = new EventEmitter<any>();
 
-    constructor(public endpoint: MaintenanceCheckEndpoint,
-                public notifier: MaintenanceNotifier,
-                public viewHelper: MaintenanceViewHelper) {
+    constructor(
+        public endpoint: MaintenanceCheckEndpoint,
+        public notifier: MaintenanceNotifier,
+        public viewHelper: MaintenanceViewHelper
+    ) {
     }
 
     check() {
-        this.endpoint.get().subscribe((response: MaintenanceConfig) => {
-            this.updateViewHelper(response);
-            this.notifier.notifyIfApplicable();
-            this.checkAgainSoon();
-        });
-    }
-
-    private checkAgainSoon() {
-        setTimeout(() => this.check(), this.getCheckDelay());
+        Observable.interval(this.getCheckDelay())
+                  .takeUntil(this.stop)
+                  .flatMap(() => this.endpoint.get())
+                  .subscribe((response: MaintenanceConfig) => {
+                      this.updateViewHelper(response);
+                      this.notifier.notifyIfApplicable();
+                  });
     }
 
     private getCheckDelay() {
