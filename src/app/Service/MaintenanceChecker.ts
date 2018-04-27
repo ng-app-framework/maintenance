@@ -25,6 +25,11 @@ export class MaintenanceChecker {
                       this.updateViewHelper(response);
                       this.notifier.notifyIfApplicable();
                   });
+        this.endpoint.get()
+            .subscribe((response: MaintenanceConfig) => {
+                this.updateViewHelper(response);
+                this.notifier.notifyIfApplicable();
+            });
     }
 
     private getCheckDelay() {
